@@ -58,3 +58,9 @@ npm run build
 
 ## Author 🎉
 [johnny990628](https://github.com/johnny990628)
+
+## Deploy on Github Pages
++ https://create-react-app.dev/docs/deployment/#github-pages
+
+### Auto Deploy with Git Hook
++ https://www.atlassian.com/git/tutorials/git-hooks
