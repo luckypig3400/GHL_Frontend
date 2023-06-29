@@ -8,9 +8,13 @@ import authReducer from './Slices/Auth'
 import reportReducer from './Slices/Report'
 import scheduleReducer from './Slices/Schedule'
 import departmentReducer from './Slices/Department'
+import department4ListReducer from './Slices/Department4List'
 import userReducer from './Slices/User'
-import DashboardReducer from './Slices/Dashboard'
-import StatisticReducer from './Slices/Statistic'
+import dashboardReducer from './Slices/Dashboard'
+import statisticReducer from './Slices/Statistic'
+import dicomReducer from './Slices/Dicom'
+import eventReducer from './Slices/Event'
+import event4ListReducer from './Slices/Event4List'
 
 export default configureStore({
     reducer: {
@@ -23,8 +27,12 @@ export default configureStore({
         report: reportReducer,
         schedule: scheduleReducer,
         department: departmentReducer,
+        department4List: department4ListReducer,
         user: userReducer,
-        dashboard: DashboardReducer,
-        statistic: StatisticReducer,
+        dashboard: dashboardReducer,
+        statistic: statisticReducer,
+        dicom: dicomReducer,
+        event: eventReducer,
+        event4List: event4ListReducer,
     },
 })

@@ -31,6 +31,24 @@ export const createDepartment = createAsyncThunk('department/createDepartment', 
         return thunkAPI.rejectWithValue()
     }
 })
+
+export const updateDepartment = createAsyncThunk('department/updateDepartment', async ({ departmentID, data }, thunkAPI) => {
+    try {
+        const response = await apiUpdateDepartment(departmentID, data)
+        thunkAPI.dispatch(
+            openAlert({
+                toastTitle: '修改成功',
+                text: data.name,
+                icon: 'success',
+            })
+        )
+        return response.data
+    } catch (e) {
+        thunkAPI.dispatch(tokenExpirationHandler(e.response))
+        return thunkAPI.rejectWithValue()
+    }
+})
+
 export const deleteDepartment = createAsyncThunk('department/deleteDepartment', async (departmentID, thunkAPI) => {
     try {
         const response = await apiDeleteDepartment(departmentID)
@@ -75,24 +93,6 @@ const departmentSlice = createSlice({
             return {
                 ...state,
                 loading: false,
-            }
-        },
-        [createDepartment.fulfilled]: (state, action) => {
-            return {
-                ...state,
-                count: state.count + 1,
-            }
-        },
-        [deleteDepartment.fulfilled]: (state, action) => {
-            return {
-                ...state,
-                count: state.count - 1,
-            }
-        },
-        [activeDepartment.fulfilled]: (state, action) => {
-            return {
-                ...state,
-                count: state.count - 1,
             }
         },
     },

@@ -22,6 +22,7 @@ import { fetchSchedule } from '../../Redux/Slices/Schedule'
 import { fillAuthState, logout } from '../../Redux/Slices/Auth'
 import { apiVerify } from '../../Axios/Auth'
 import Login from '../../Pages/Login/Login'
+import CustomNavbar from '../CustomNavbar/CustomNavbar'
 
 const Layout = () => {
     const { verify } = useSelector(state => state.auth)
@@ -85,10 +86,10 @@ const Main = () => {
         }
     }, 1000)
 
-    const actions = [
-        { icon: <Logout />, name: '登出', event: () => dispatch(logout()) },
-        { icon: <Refresh />, name: '重新載入', event: refresh },
-    ]
+    // const actions = [
+    //     { icon: <Logout />, name: '登出', event: () => dispatch(logout()) },
+    //     { icon: <Refresh />, name: '重新載入', event: refresh },
+    // ]
 
     useEffect(() => {
         setPage(SidebarItem.find(item => item.path === pathName))
@@ -96,15 +97,16 @@ const Main = () => {
 
     return (
         <Box sx={{ height: '100vh', display: 'flex' }}>
+            <CustomNavbar />
             <Sidebar />
             <CustomScrollbar>
                 <Box className={`${classes.container} ${isOpen || 'close'}`}>
                     <Router />
-                    <SpeedDial ariaLabel="SpeedDial basic example" sx={{ position: 'fixed', bottom: 25, right: 25 }} icon={<Dehaze />}>
+                    {/* <SpeedDial ariaLabel="SpeedDial basic example" sx={{ position: 'fixed', bottom: 25, right: 25 }} icon={<Dehaze />}>
                         {actions.map(action => (
                             <SpeedDialAction key={action.name} icon={action.icon} tooltipTitle={action.name} onClick={action.event} />
                         ))}
-                    </SpeedDial>
+                    </SpeedDial> */}
                 </Box>
             </CustomScrollbar>
         </Box>

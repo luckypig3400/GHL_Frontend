@@ -32,13 +32,13 @@ const Sidebar = () => {
 
     return (
         <Drawer variant={'permanent'} classes={{ paper: `${classes.container} ${isOpen || 'close'}` }}>
-            {isOpen ? (
+            {/* {isOpen ? (
                 <img src="./GHL.png" className={classes.logo} alt="logo" />
             ) : (
                 <Box className={classes.openIcon} onClick={() => dispatch(openSidebar())}>
                     <Dehaze />
                 </Box>
-            )}
+            )} */}
             <List className={classes.list}>
                 {SidebarItem.map((item, index) => (
                     <Authorized key={item.display_name} currentRole={user.role} authority={item.authority} noMatch={<></>}>
@@ -53,10 +53,10 @@ const Sidebar = () => {
                                 }}
                             >
                                 {isOpen ? (
-                                    <Box className={classes.icon}>{item.icon}</Box>
+                                    <Box className={`${classes.icon} ${index === activeItem && 'active'}`}>{item.icon}</Box>
                                 ) : (
                                     <Tooltip title={item.display_name} placement="right-start" arrow>
-                                        <Box className={classes.icon}>{item.icon}</Box>
+                                        <Box className={`${classes.icon} ${index === activeItem && 'active'}`}>{item.icon}</Box>
                                     </Tooltip>
                                 )}
 
@@ -66,18 +66,14 @@ const Sidebar = () => {
                     </Authorized>
                 ))}
             </List>
-            {isOpen && (
+            {isOpen ? (
                 <Box className={classes.closeIcon} onClick={() => dispatch(closeSidebar())}>
                     <DoubleArrow sx={{ transform: 'rotate(180deg)' }} />
                 </Box>
-            )}
-            {isOpen && (
-                <img
-                    src="./logo.jpg"
-                    className={classes.logo}
-                    alt="logo"
-                    style={{ width: '3.8rem', height: '4rem', position: 'fixed', top: 2 }}
-                />
+            ) : (
+                <Box className={classes.openIcon} onClick={() => dispatch(openSidebar())}>
+                    <DoubleArrow />
+                </Box>
             )}
         </Drawer>
     )

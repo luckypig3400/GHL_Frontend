@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { closeAlert } from '../../Redux/Slices/Alert'
+import './style.css'
 
 const CustomAlert = () => {
     const dispatch = useDispatch()
@@ -12,10 +13,12 @@ const CustomAlert = () => {
 
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
         timer: 1500,
         timerProgressBar: true,
+        customClass: { container: 'alert' },
+        background: theme.palette.background.secondary,
         didOpen: toast => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
@@ -33,6 +36,7 @@ const CustomAlert = () => {
                         confirmButtonText: '確定',
                         confirmButtonColor: theme.palette.primary.main,
                         cancelButtonText: `取消`,
+                        background: theme.palette.background.secondary,
                     }).then(result => {
                         if (result.isConfirmed) {
                             event().then(() =>
@@ -56,6 +60,7 @@ const CustomAlert = () => {
                         confirmButtonText: '確定',
                         confirmButtonColor: theme.palette.primary.main,
                         cancelButtonText: `取消`,
+                        background: theme.palette.background.secondary,
                         inputValidator: text => {
                             return !text && '輸入點什麼吧'
                         },

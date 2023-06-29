@@ -6,13 +6,25 @@ const useStyles = makeStyles(theme => ({
         height: '86vh',
         padding: '1rem',
     },
+    headerFont: {
+        color: theme.palette.text.gray,
+    },
     tableHeader: {
         fontSize: '1.1rem',
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.background.opaque,
         borderBottom: `1px solid ${theme.palette.primary.light}`,
         [theme.breakpoints.down('lg')]: {
             fontSize: '1rem',
         },
+    },
+    tableBody: {},
+    tableCell: {
+        border: 0,
+        fontSize: '1.1rem',
+    },
+    tableRow: {
+        // backgroundColor: theme.palette.secondary.main,
+        // borderRadius: '5rem',
     },
     tableHeaderTotal: {
         marginRight: '2rem',
@@ -20,9 +32,10 @@ const useStyles = makeStyles(theme => ({
     },
     tableFooter: {
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'right',
         alignItems: 'center',
         paddingInline: '1rem',
+        height: '10%',
     },
     tableFooterItem: {
         marginRight: '1rem',
